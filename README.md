@@ -71,4 +71,4 @@ module.exports = {
 
 # Repositorio
 
-## https://github.com/feregc/BancoOccPT.git
+## https://github.com/feregc/ProyectoBanca.git
