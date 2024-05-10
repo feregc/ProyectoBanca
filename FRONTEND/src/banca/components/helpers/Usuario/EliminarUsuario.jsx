@@ -37,14 +37,16 @@ export const EliminarUsuario = () => {
       "success"
     );
 
+    startLoadingUsuarios();
     onUsuarioResetForm();
 
     startLoadingUsuarios();
   };
 
-  const usuarios = Array.isArray(usuarioData.usuario.usuarios)
-    ? usuarioData.usuario.usuarios
-    : [];
+  const usuarios =
+    usuarioData.usuario && Array.isArray(usuarioData.usuario.usuarios)
+      ? usuarioData.usuario.usuarios
+      : [];
 
   return (
     <>

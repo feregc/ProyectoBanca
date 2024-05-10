@@ -42,8 +42,9 @@ export const useAuthStore = () => {
     }
   };
 
-  const checkAuthToken = async () => {
-    const token = localStorage.getItem("token");
+  const checkAuthToken = async (token) => {
+    // const token = localStorage.getItem("token");
+    console.log("Token almacenado:",token);
     if (!token) return dispatch(onLogout());
 
     try {
@@ -51,7 +52,7 @@ export const useAuthStore = () => {
       console.log(data);
       localStorage.setItem("token", data.token);
       localStorage.setItem("token-init-date", new Date().getTime());
-      dispatch(onLogin({ name: data.name, uid: data.uid }));
+      dispatch(onLogin({ name: data.name, uid: data.uid, token: data.token}));
     } catch (error) {
       localStorage.clear();
       dispatch(onLogout());

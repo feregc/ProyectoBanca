@@ -56,7 +56,7 @@ const createUser = async (req, res) => {
     const uid = new Date().getMilliseconds();
     const codUsuario = isAdmin ? "admin" : "user";
 
-    const token = await generarJWT( uid, codUsuario );
+    const token = await generarJWT({name: email, uid: uid} );
     res.status(201).json({
       ok: true,
       msg: "Usuario creado exitosamente",
@@ -107,7 +107,7 @@ const loginUser = async (req, res) => {
       codigoUsuario: ucod,
     } = usuario;
 
-    const token = await generarJWT( ucod, uid );
+    const token = await generarJWT( {name: name, uid: uid} );
 
     res.status(200).json({
       ok: true,
@@ -127,7 +127,10 @@ const revalidarToken = async(req, res = response) => {
   const { email, codigoUsuario } = req;
 
   //* Generar un nuevo JWT y retornarlo en la respuesta
-  const token = await generarJWT( email, codigoUsuario );
+  const token = await generarJWT( {name: email, uid: uid} );
+
+  console.log('revalidarToken');
+  console.log(token);
 
   res.json({
     ok: true,

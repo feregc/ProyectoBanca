@@ -1,8 +1,5 @@
 import Swal from "sweetalert2";
-import {
-  useForm,
-  useUsuarioStore,
-} from "../../../../hooks";
+import { useForm, useUsuarioStore } from "../../../../hooks";
 
 import { Navbar } from "../../Navbar";
 import { useEffect } from "react";
@@ -74,9 +71,10 @@ export const ActualizarUsuario = () => {
 
   // console.log(usuarioData.usuario.usuarios);
 
-  const usuarios = Array.isArray(usuarioData.usuario.usuarios)
-    ? usuarioData.usuario.usuarios
-    : [];
+  const usuarios =
+    usuarioData.usuario && Array.isArray(usuarioData.usuario.usuarios)
+      ? usuarioData.usuario.usuarios
+      : [];
 
   return (
     <>
